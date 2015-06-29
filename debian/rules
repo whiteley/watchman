@@ -12,5 +12,10 @@ include /usr/share/dpkg/default.mk
 
 override_dh_autoreconf:
 	dh_autoreconf -- ./autogen.sh
+
 override_dh_auto_configure:
 	dh_auto_configure -- --enable-statedir=/run/watchman
+
+override_dh_installman:
+	ronn --roff debian/watchman.1.ronn
+	dh_installman

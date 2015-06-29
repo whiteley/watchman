@@ -1,0 +1,87 @@
+watchman(1) -- A file watching service.
+=======================================
+
+## SYNOPSIS
+
+`watchman` `watch` <path><br>
+
+## DESCRIPTION
+
+The watchman executable contains both the client and the server components of
+the watchman service.
+
+By default, when watchman is run, it will attempt to communicate with your
+existing server instance (each user has their own persistent process), and will
+attempt to start it if it doesn't exist.
+
+## OPTIONS
+
+There are some options that affect how watchman will locate the server, some
+options that affect only the client and some others that affect only the
+server. Since all of the options are understood by the same executable we've
+broken those out into sections of their own to make it clearer when they apply.
+
+### Locating the service
+
+  * `-U`, `--sockname`=<path>:
+    Specify alternate socket name.
+
+### Client Options
+
+  * `--no-spawn`:
+    Don't spawn service if it is not already running. Will try running the
+    command in client mode if possible.
+
+  * `--no-local`:
+    When no-spawn is enabled, don't use client mode.
+
+  * `-p`, `--persistent`:
+    Persist and wait for further responses.
+
+  * `--server-encoding`=<encoding>:
+    CLI &lt;-&gt; server encoding. `json` (default) or `bser`.
+
+### Input and Output
+
+  * `--output-encoding`=<encoding>:
+    CLI &lt;-&gt; server encoding. `json` (default) or `bser`.
+
+  * `--no-pretty`:
+    Don't pretty print JSON output (more efficient when being processed by
+    another program).
+
+  * `-j`, `--json-command` &lt; <file>:
+    Instead of passing the request as command line parameters, you can send a
+    JSON representation on the stdin stream.
+
+### Server Options
+
+  * `--statefile`=<path>:
+    Specify path to file to hold watch and trigger state.
+
+  * `-n`, `--no-save-state`:
+    Don't save state between invocations.
+
+  * `-o`, `--logfile`=<path>:
+    Specify path to logfile
+
+  * `--log-level`=<level>:
+    Set log verbosity (0 = off, default is 1, verbose = 2)
+
+  * `-f`, `--foreground`:
+    Run the service in the foreground
+
+## Exit Status
+
+The watchman binary will exit with a return code of 0 in most cases; this
+indicates that the output it generated should be valid JSON. To determine if
+your command was successful, you need to parse the JSON and look for the error
+field as described above.
+
+Watchman will exit with a non-zero exit status in cases where something
+low-level went wrong, such as protocol level errors (eg: connection was
+terminated).
+
+## COPYRIGHT
+
+Watchman is Copyright (C) 2015 Facebook, Inc. <https://facebook.github.io/watchman/>

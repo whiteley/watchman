@@ -3,7 +3,7 @@ Section: misc
 Priority: optional
 Maintainer: Matt Whiteley <mwhiteley@fastly.com>
 Build-Depends: debhelper (>= 9), dh-autoreconf, libmagic1, libpcre3-dev,
-  libreadline6
+  libreadline6, ruby-ronn
 Standards-Version: 3.9.5
 Homepage: https://facebook.github.io/watchman/
 #Vcs-Git: git://anonscm.debian.org/collab-maint/watchman.git
