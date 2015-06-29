@@ -1,0 +1,5 @@
+watchman (3.3.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Matt Whiteley <mwhiteley@fastly.com>  Sun, 28 Jun 2015 17:05:10 -0700
