@@ -2,7 +2,8 @@ Source: watchman
 Section: misc
 Priority: optional
 Maintainer: Matt Whiteley <mwhiteley@fastly.com>
-Build-Depends: debhelper (>= 9), cdbs, libmagic1, libpcre3-dev, libreadline6
+Build-Depends: debhelper (>= 9), cdbs, dh-autoreconf, libmagic1, libpcre3-dev,
+  libreadline6
 Standards-Version: 3.9.5
 Homepage: https://facebook.github.io/watchman/
 #Vcs-Git: git://anonscm.debian.org/collab-maint/watchman.git
